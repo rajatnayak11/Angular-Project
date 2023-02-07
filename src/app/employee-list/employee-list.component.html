@@ -1,0 +1,45 @@
+<div class = 'card'>
+
+    <div class='card-body'>
+        <button class = 'btn btn-primary' (click) = 'onFilterClick()'>{{showFilter ? 'Hide' : 'Show'}} Filter</button>
+        <div *ngIf='showFilter'>
+        <div class='row'>
+            <div class ='col-md-2'>Filter by name:</div>
+            <div class ='col-md-4'>
+                <input type = 'text' [(ngModel)] = 'filterList'/>
+            </div>
+        </div>
+        <div class='row'>
+            <div class ='col-md-6'>
+                <h4>Filtered by: {{filterList}}</h4>
+            </div>
+        </div>
+        </div>
+        <div class='table-responsive'>
+            <table class = 'table'*ngIf='employees.length'>
+                <thead>
+                    <tr>
+                        <th>Employee name</th>
+                        <th>Employee Designation</th>
+                        <th>Employee Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = 'let employee of employees'>
+                        <td>{{employee.employeeName}}</td>
+                        <td>{{employee.employeeDesignation}}</td>
+                        <td>{{employee.employeeEmail}}</td>
+                        <td>
+                            <button class = 'btn btn-info' style="margin-left: 10px;" (click)="onClickInfo(employee.employeeId)" >Info</button>
+                            <button class = 'btn btn-info' style="margin-left: 10px;" (click)="onClickUpdate(employee.employeeId)">Update</button>
+                            <button class = 'btn btn-danger' style="margin-left: 10px;" (click)="onClickDelete(employee.employeeId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
